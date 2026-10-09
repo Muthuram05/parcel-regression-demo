@@ -20,11 +20,18 @@ form.addEventListener("submit", async (event) => {
         productId: fields.get("productId"),
         quantity: Number(fields.get("quantity")),
         promoCode: fields.get("promoCode"),
+        giftWrap: fields.has("giftWrap"),
       }),
     });
     const data = await response.json();
     if (!response.ok) throw Error(data.error);
-    for (const key of ["subtotal", "discount", "shipping", "total"])
+    for (const key of [
+      "subtotal",
+      "discount",
+      "shipping",
+      "giftWrapping",
+      "total",
+    ])
       document.querySelector(`[data-testid="${key}"]`).textContent = currency(
         data[key],
       );

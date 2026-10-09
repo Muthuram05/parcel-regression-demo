@@ -69,7 +69,10 @@
               autocomplete="off"
           /></label>
           <p class="field-help">SAVE10 takes 10% off your items.</p>
-          <!-- optional checkout features -->
+          <label class="gift-option"
+            ><input type="checkbox" name="giftWrap" />Add gift wrapping for
+            ₹75</label
+          >
           <button type="submit">Update order</button>
           <p id="error" role="alert" aria-live="assertive"></p>
         </form>
@@ -77,7 +80,9 @@
           <div><span>Items</span><b data-testid="subtotal">₹500.00</b></div>
           <div><span>Promotion</span><b data-testid="discount">₹0.00</b></div>
           <div><span>Delivery</span><b data-testid="shipping">₹50.00</b></div>
-          <!-- optional receipt rows -->
+          <div>
+            <span>Gift wrapping</span><b data-testid="giftWrapping">₹0.00</b>
+          </div>
           <div class="total">
             <span>Order total</span><strong data-testid="total">₹550.00</strong>
           </div>

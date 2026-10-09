@@ -8,6 +8,7 @@ export function quote({
   productId = "notebook",
   quantity = 1,
   promoCode = "",
+  giftWrap = false,
 } = {}) {
   const product = products.find((item) => item.id === productId);
   if (!product) throw new Error("Choose an available product.");
@@ -22,13 +23,17 @@ export function quote({
   const subtotal = product.price * quantity;
   const discount = promoApplied ? Math.round(subtotal * 0.1) : 0;
   const shipping = subtotal - discount > 1000 ? 0 : 50;
+  if (typeof giftWrap !== "boolean")
+    throw new Error("Choose a valid gift wrapping option.");
+  const giftWrapping = giftWrap ? 75 : 0;
   return {
     product: product.name,
     quantity,
     subtotal,
     discount,
     shipping,
-    total: subtotal - discount + shipping,
+    giftWrapping,
+    total: subtotal - discount + shipping + giftWrapping,
     promoApplied,
   };
 }
