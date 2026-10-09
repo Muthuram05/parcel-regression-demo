@@ -21,11 +21,11 @@ Open http://127.0.0.1:4180. Set `PORT` to run another preview. Each browser page
 
 All three branches start from the same `main` revision. They are intentionally kept unmerged.
 
-| Branch | Purpose | Expected checks |
-| --- | --- | --- |
-| `demo-101-free-delivery-boundary` | Correct bug fix: orders of exactly ₹1,000 qualify for free delivery | Existing tests and the new boundary test pass |
-| `demo-102-promo-normalization` | Deliberately unsafe bug fix: whitespace is accepted, but the discount rate is accidentally changed to 20% | Existing ten-percent discount checks fail; this PR must remain unmerged |
-| `demo-103-gift-wrapping` | Feature: optional gift wrapping costs ₹75 | Existing checks and new wrapping tests pass |
+| Branch                            | Purpose                                                                                                   | Expected checks                                                         |
+| --------------------------------- | --------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------- |
+| `demo-101-free-delivery-boundary` | Correct bug fix: orders of exactly ₹1,000 qualify for free delivery                                       | Existing tests and the new boundary test pass                           |
+| `demo-102-promo-normalization`    | Deliberately unsafe bug fix: whitespace is accepted, but the discount rate is accidentally changed to 20% | Existing ten-percent discount checks fail; this PR must remain unmerged |
+| `demo-103-gift-wrapping`          | Feature: optional gift wrapping costs ₹75                                                                 | Existing checks and new wrapping tests pass                             |
 
 The starting implementation has known delivery-boundary and promotion-whitespace defects. Baseline checks intentionally do not yet cover those acceptance cases; each bug-fix PR adds its missing check. The unsafe PR demonstrates why existing regression checks must also run. The delivery defect remains on branches that do not contain DEMO-101.
 
