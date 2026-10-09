@@ -21,7 +21,7 @@ export function quote({
     throw new Error("Promotion code is not valid.");
   const subtotal = product.price * quantity;
   const discount = promoApplied ? Math.round(subtotal * 0.1) : 0;
-  const shipping = subtotal - discount > 1000 ? 0 : 50;
+  const shipping = subtotal - discount >= 1000 ? 0 : 50;
   return {
     product: product.name,
     quantity,
