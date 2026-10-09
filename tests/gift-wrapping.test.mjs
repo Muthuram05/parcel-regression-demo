@@ -4,9 +4,9 @@ import { quote } from "../src/checkout/pricing.mjs";
 test("gift wrapping is optional and off by default", () =>
   assert.equal(quote().giftWrapping, 0));
 test("gift wrapping adds ₹75 once per order", () => {
-  const order = quote({ quantity: 2, giftWrap: true });
+  const order = quote({ quantity: 3, giftWrap: true });
   assert.equal(order.giftWrapping, 75);
-  assert.equal(order.total, 1125);
+  assert.equal(order.total, 1575);
 });
 test("removing gift wrapping restores the original total", () =>
   assert.equal(quote({ giftWrap: false }).total, 550));
