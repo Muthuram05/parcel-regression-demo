@@ -15,12 +15,12 @@ export function quote({
     throw new Error("Quantity must be a whole number between 1 and 10.");
   if (typeof promoCode !== "string" || promoCode.length > 40)
     throw new Error("Enter a promotion code of 40 characters or fewer.");
-  const normalizedCode = promoCode.toUpperCase();
+  const normalizedCode = promoCode.trim().toUpperCase();
   const promoApplied = normalizedCode === "SAVE10";
   if (normalizedCode && !promoApplied)
     throw new Error("Promotion code is not valid.");
   const subtotal = product.price * quantity;
-  const discount = promoApplied ? Math.round(subtotal * 0.1) : 0;
+  const discount = promoApplied ? Math.round(subtotal * 0.2) : 0;
   const shipping = subtotal - discount > 1000 ? 0 : 50;
   return {
     product: product.name,
